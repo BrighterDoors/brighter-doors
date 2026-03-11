@@ -395,12 +395,6 @@
             margin-bottom: 1.5rem;
         }
         .cta-email:hover { border-bottom-color: var(--gold-soft); }
-        .cta-phone {
-            display: block;
-            font-size: 0.95rem;
-            color: rgba(248,245,240,0.5);
-            margin-top: 0.5rem;
-        }
 
         /* ===== FOOTER ===== */
         footer {
@@ -638,7 +632,6 @@
         <div class="section-title">Let's talk about your church's online presence.</div>
         <p>No pressure, no jargon, no upselling. Just an honest conversation about where you are and how I might be able to help.</p>
         <a href="mailto:daniel@brighterdoors.com" class="cta-email">daniel@brighterdoors.com</a>
-        <span class="cta-phone">(XXX) XXX-XXXX</span>
     </div>
 </section>
 
@@ -646,7 +639,7 @@
     <p>&copy; 2026 Brighter Doors. Helping churches be found by the people who need them.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Nav scroll effect
 window.addEventListener('scroll', () => {
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
@@ -661,10 +654,4 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Smooth scroll for nav links
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.qu
+document.qu
