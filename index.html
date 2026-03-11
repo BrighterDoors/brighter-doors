@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brighter Doors | Church & Non-Profit Web Visibility | DC Metro Area</title>
+    <meta name="description" content="Brighter Doors helps churches and non-profits in DC, Northern Virginia, and Maryland improve their online visibility, local search ranking, and website effectiveness. Founded by an ordained pastor with professional digital marketing experience.">
+    <meta name="keywords" content="church SEO, church website, non-profit web design, Google Maps church, DC church marketing, Northern Virginia church website, Maryland church SEO, brighter doors">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a2e;
+            --warm: #f8f5f0;
+            --cream: #fdfcfa;
+            --accent: #2d5a3d;
+            --accent-light: #3d7a52;
+            --gold: #b8860b;
+            --gold-soft: #d4a843;
+            --text: #3a3a4a;
+            --text-light: #6a6a7a;
+            --border: #e2ddd5;
+            --shadow: rgba(26, 26, 46, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(253, 252, 250, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: box-shadow 0.3s ease;
+        }
+        nav.scrolled { box-shadow: 0 2px 20px var(--shadow); }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.9rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.15rem;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+        .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-cta {
+            background: var(--accent) !important;
+            color: var(--cream) !important;
+            padding: 0.5rem 1.2rem !important;
+            border-radius: 6px;
+            transition: background 0.2s !important;
+        }
+        .nav-cta:hover { background: var(--accent-light) !important; }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--ink);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards 0.2s;
+        }
+        .hero h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            color: var(--ink);
+            line-height: 1.2;
+            max-width: 720px;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards 0.4s;
+        }
+        .hero p {
+            font-size: 1.12rem;
+            color: var(--text-light);
+            max-width: 580px;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards 0.6s;
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--accent);
+            color: var(--cream);
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards 0.8s;
+        }
+        .hero-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(45, 90, 61, 0.25);
+        }
+        .hero-cta svg { transition: transform 0.2s; }
+        .hero-cta:hover svg { transform: translateX(3px); }
+
+        .hero-accent {
+            position: absolute;
+            top: 8rem;
+            right: 2rem;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(45,90,61,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+        .section-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            color: var(--ink);
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* ===== WHY SECTION ===== */
+        .why { background: var(--warm); }
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        .why-text { padding-top: 0.5rem; }
+        .why-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1.02rem;
+            line-height: 1.8;
+        }
+        .credential {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .credential-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+        .credential-icon.pastor { background: rgba(184, 134, 11, 0.12); }
+        .credential-icon.digital { background: rgba(45, 90, 61, 0.12); }
+        .credential-icon.guest { background: rgba(26, 26, 46, 0.08); }
+        .credential h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.2rem;
+        }
+        .credential p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* ===== SERVICES ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .service-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.2rem 1.8rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 30px var(--shadow);
+            transform: translateY(-2px);
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-tier {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+        }
+        .service-card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.2rem;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+        .service-price {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .service-list {
+            list-style: none;
+            padding: 0;
+        }
+        .service-list li {
+            font-size: 0.85rem;
+            color: var(--text);
+            padding: 0.35rem 0;
+            padding-left: 1.3rem;
+            position: relative;
+        }
+        .service-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* ===== COMMON ISSUES ===== */
+        .issues { background: var(--warm); }
+        .issues-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin-top: 2.5rem;
+        }
+        .issue-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 1.2rem 1.4rem;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+        .issue-icon {
+            flex-shrink: 0;
+            font-size: 1.3rem;
+            margin-top: 0.1rem;
+        }
+        .issue-item p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        /* ===== AREA ===== */
+        .area-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 2rem;
+        }
+        .area-tag {
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            color: var(--text);
+            background: white;
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            background: var(--ink);
+            color: var(--cream);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        .cta-section .section-title { color: var(--cream); }
+        .cta-section p {
+            color: rgba(248, 245, 240, 0.7);
+            max-width: 520px;
+            margin: 0 auto 2rem;
+            font-size: 1.05rem;
+        }
+        .cta-email {
+            display: inline-block;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.3rem;
+            color: var(--gold-soft);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+            margin-bottom: 1.5rem;
+        }
+        .cta-email:hover { border-bottom-color: var(--gold-soft); }
+        .cta-phone {
+            display: block;
+            font-size: 0.95rem;
+            color: rgba(248,245,240,0.5);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: 1fr; max-width: 500px; }
+            .why-grid { grid-template-columns: 1fr; }
+            .issues-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .hero { padding: 8rem 1.5rem 4rem; }
+            section { padding: 3.5rem 1.5rem; }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(253,252,250,0.98);
+                padding: 1.5rem 2rem;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 8px 20px var(--shadow);
+            }
+            .hero-accent { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-brand">Brighter <span>Doors</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#issues">Common Issues</a>
+            <a href="#contact" class="nav-cta">Get in Touch</a>
+        </div>
+        <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-accent"></div>
+    <div class="hero-eyebrow">Church & Non-Profit Digital Visibility — DC Metro Area</div>
+    <h1>Your church deserves to be found by the people looking for it.</h1>
+    <p>I'm an ordained pastor with professional digital marketing experience. I help churches and non-profits in the DC Metro area improve their online presence, local search ranking, and website effectiveness — at rates that respect your budget.</p>
+    <a href="#contact" class="hero-cta">
+        Let's Talk
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+</section>
+
+<section class="why" id="about">
+    <div class="container">
+        <div class="why-grid">
+            <div>
+                <div class="section-label">Why I Do This</div>
+                <div class="section-title">I've sat in your chair.</div>
+                <div class="section-subtitle" style="margin-bottom:1.5rem;">I know what it's like to pour your heart into a ministry and realize nobody's finding your church online because your website still says "Welcome to 2017" and your Google listing has the wrong service times.</div>
+            </div>
+            <div class="why-text">
+                <div class="credential">
+                    <div class="credential-icon pastor">&#9769;</div>
+                    <div>
+                        <h4>Ordained Pastor</h4>
+                        <p>I understand church culture, governance, budgets, and what your congregation is trying to communicate to newcomers. I'm not an outsider selling to you — I speak your language.</p>
+                    </div>
+                </div>
+                <div class="credential">
+                    <div class="credential-icon digital">&#9881;</div>
+                    <div>
+                        <h4>Digital Marketing Professional</h4>
+                        <p>Years of experience in SEO, local search, Google Business Profiles, content strategy, and website optimization. I know what Google is looking for and how to deliver it.</p>
+                    </div>
+                </div>
+                <div class="credential">
+                    <div class="credential-icon guest">&#9734;</div>
+                    <div>
+                        <h4>Guest-First Perspective</h4>
+                        <p>I know what a first-time visitor needs to see in the first five seconds: service times, location, what to expect, parking, childcare. I make sure your site delivers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <div class="container">
+        <div class="section-label">Services</div>
+        <div class="section-title">Three ways I can help.</div>
+        <div class="section-subtitle">Every engagement starts with understanding where you are and what your church needs. No cookie-cutter packages.</div>
+
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-tier">Foundation</div>
+                <h3>Digital Presence Audit</h3>
+                <div class="service-price">Starting at $250</div>
+                <p>A comprehensive review of your church's online footprint with a prioritized action plan.</p>
+                <ul class="service-list">
+                    <li>Google Business Profile review</li>
+                    <li>Website SEO &amp; performance audit</li>
+                    <li>Local search visibility check</li>
+                    <li>First-time visitor experience test</li>
+                    <li>Competitor comparison</li>
+                    <li>Written report with recommendations</li>
+                </ul>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-tier">Growth</div>
+                <h3>Optimization &amp; Implementation</h3>
+                <div class="service-price">$300 – $750 /month</div>
+                <p>Hands-on improvements to your existing website, search presence, and Google Maps listing.</p>
+                <ul class="service-list">
+                    <li>Everything in the Audit, plus:</li>
+                    <li>On-page SEO fixes</li>
+                    <li>Google Maps optimization</li>
+                    <li>Content writing &amp; restructuring</li>
+                    <li>Local citation building</li>
+                    <li>Analytics setup &amp; monthly reporting</li>
+                    <li>Staff training on updates</li>
+                </ul>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-tier">Transformation</div>
+                <h3>Website Rebuild</h3>
+                <div class="service-price">$2,500 – $5,000</div>
+                <p>When your current site can't be saved. A full rebuild with modern design, SEO, and content — managed end to end.</p>
+                <ul class="service-list">
+                    <li>Everything in Optimization, plus:</li>
+                    <li>Modern, mobile-first website</li>
+                    <li>Visitor-focused information architecture</li>
+                    <li>Professional copywriting</li>
+                    <li>Sermon &amp; media integration</li>
+                    <li>Online giving setup</li>
+                    <li>Post-launch SEO monitoring</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="issues" id="issues">
+    <div class="container">
+        <div class="section-label">Sound Familiar?</div>
+        <div class="section-title">Issues I see on church websites every day.</div>
+        <div class="section-subtitle">If even one of these applies to you, we should talk.</div>
+
+        <div class="issues-grid">
+            <div class="issue-item reveal">
+                <div class="issue-icon">&#128269;</div>
+                <p><strong>You don't show up</strong> when someone Googles "churches near me" or "[denomination] church [your city]."</p>
+            </div>
+            <div class="issue-item reveal">
+                <div class="issue-icon">&#128241;</div>
+                <p><strong>Your site doesn't work on phones.</strong> Over 60% of church searches happen on mobile devices.</p>
+            </div>
+            <div class="issue-item reveal">
+                <div class="issue-icon">&#128337;</div>
+                <p><strong>Your Google listing has wrong hours</strong>, missing photos, or no reviews — so Google shows competitors instead.</p>
+            </div>
+            <div class="issue-item reveal">
+                <div class="issue-icon">&#128100;</div>
+                <p><strong>First-time visitors can't find the basics</strong> — service times, what to expect, parking, childcare — within 5 seconds.</p>
+            </div>
+            <div class="issue-item reveal">
+                <div class="issue-icon">&#128197;</div>
+                <p><strong>Your homepage content is months or years old.</strong> Google and visitors both interpret staleness as inactivity.</p>
+            </div>
+            <div class="issue-item reveal">
+                <div class="issue-icon">&#128274;</div>
+                <p><strong>Your site has been compromised</strong> with hidden spam or security vulnerabilities you don't know about.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-label">Service Area</div>
+        <div class="section-title">Serving the DC Metro area.</div>
+        <div class="section-subtitle">I work with churches and non-profits across the region, with a focus on local visibility in the communities where your congregation lives.</div>
+        <div class="area-tags">
+            <span class="area-tag">Washington, DC</span>
+            <span class="area-tag">Fairfax</span>
+            <span class="area-tag">Arlington</span>
+            <span class="area-tag">Alexandria</span>
+            <span class="area-tag">Springfield</span>
+            <span class="area-tag">Burke</span>
+            <span class="area-tag">Vienna</span>
+            <span class="area-tag">Falls Church</span>
+            <span class="area-tag">Centreville</span>
+            <span class="area-tag">Reston</span>
+            <span class="area-tag">Manassas</span>
+            <span class="area-tag">Bethesda</span>
+            <span class="area-tag">Silver Spring</span>
+            <span class="area-tag">Rockville</span>
+            <span class="area-tag">College Park</span>
+            <span class="area-tag">Bowie</span>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="contact">
+    <div class="container">
+        <div class="section-label" style="color: var(--gold-soft);">Get Started</div>
+        <div class="section-title">Let's talk about your church's online presence.</div>
+        <p>No pressure, no jargon, no upselling. Just an honest conversation about where you are and how I might be able to help.</p>
+        <a href="mailto:daniel@brighterdoors.com" class="cta-email">daniel@brighterdoors.com</a>
+        <span class="cta-phone">(XXX) XXX-XXXX</span>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Brighter Doors. Helping churches be found by the people who need them.</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.qu
